@@ -1,6 +1,7 @@
 import { Carousel, Typography } from "@material-tailwind/react";
-import medicine from '../assets/slider/medicine.png'
-
+import medicine from "../assets/slider/medicine.png";
+import supplements from "../assets/slider/medicine-bottles-tablets3.png";
+import pharmacist from "../assets/slider/female-pharmacist.png";
 
 const Slider = () => {
   return (
@@ -19,7 +20,7 @@ const Slider = () => {
       {/* Card 1 */}
       <div className="h-[inherit] w-[inherit] rounded-[inherit] overflow-hidden relative flex items-center">
         <img
-          src={medicine}
+          src={pharmacist}
           alt="image of drugs"
           className="object-cover md:object-cover"
         />
@@ -31,14 +32,69 @@ const Slider = () => {
           >
             Your Health, Our Priority
           </Typography>
-          <Typography variant="lead " color="white" className="text-[0.9rem] font-medium leading-[1rem]   md:text-[1.4rem] md:leading-[1.7rem]   lg:text-[]">
-            Explore our trusted range <br />of Essential Medicines
+          <Typography
+            variant="lead "
+            color="white"
+            className="text-[0.9rem] font-medium leading-[1rem]   md:text-[1.4rem] md:leading-[1.7rem]   lg:text-[1.2rem] lg:leading-[1.7rem]"
+          >
+            Explore our trusted range <br />
+            of Essential Medicines
             <br />
+          </Typography>
+        </div>
+      </div>
+      {/* Card 2 */}
+      <div className="h-[inherit] w-[inherit] rounded-[inherit] overflow-hidden relative flex items-center">
+        <img
+          src={medicine}
+          alt="image of drugs"
+          className="object-cover md:object-cover"
+        />
+        <div className="h-[100%] w-[100%] bg-gradient-to-r from-[#000000d6] to-[#00000000] px-[60px] gap-y-[0.4rem] absolute left-0 top-0 right-0 bottom-0 flex flex-col justify-center    md:px-[70px]    lg:items-start lg:px-[80px]">
+          <Typography
+            variant="h1"
+            color="white"
+            className="text-[1.2rem] font-semibold leading-[1.3rem]   md:text-[2.3rem] md:w-[70%] md:px-[0px] md:leading-[2.6rem] lg:w-[50%] lg:font-semibold lg:leading-[2.9rem]"
+          >
+            More Than a Pharmacy
+          </Typography>
+          <Typography
+            variant="lead "
+            color="white"
+            className="text-[0.9rem] font-medium leading-[1rem]   md:text-[1.4rem] md:leading-[1.7rem]   lg:text-[1.2rem] lg:leading-[1.7rem]"
+          >
+            Discover Vitamins, Supplements, <br />
+            and Wellness Essentials
+          </Typography>
+        </div>
+      </div>
+      {/* Card 3 */}
+      <div className="h-[inherit] w-[inherit] rounded-[inherit] overflow-hidden relative flex items-center">
+        <img
+          src={supplements}
+          alt="image of drugs"
+          className="object-cover md:object-cover"
+        />
+        <div className="h-[100%] w-[100%] bg-gradient-to-r from-[#000000d6] to-[#00000000] px-[60px] gap-y-[0.4rem] absolute left-0 top-0 right-0 bottom-0 flex flex-col justify-center    md:px-[70px]    lg:items-start lg:px-[80px]">
+          <Typography
+            variant="h1"
+            color="white"
+            className="text-[1.2rem] font-semibold leading-[1.3rem]   md:text-[2.3rem] md:w-[70%] md:px-[0px] md:leading-[2.6rem] lg:w-[50%] lg:font-semibold lg:leading-[2.9rem]"
+          >
+            Affordability You Can Trust
+          </Typography>
+          <Typography
+            variant="lead "
+            color="white"
+            className="text-[0.9rem] font-medium leading-[1rem]   md:text-[1.4rem] md:leading-[1.7rem]   lg:text-[1.2rem] lg:leading-[1.7rem]"
+          >
+            Shop and Save on Everyday <br/> Health Essentials
+            
           </Typography>
         </div>
       </div>
     </Carousel>
   );
-}
+};
 
 export default Slider;
