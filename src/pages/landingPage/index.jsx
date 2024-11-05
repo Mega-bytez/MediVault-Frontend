@@ -1,9 +1,12 @@
+import LandingLayout from "../../layouts/LandingLayout";
 
 
 const LandingPage = () => {
   return (
-    <div>LandingPage</div>
-  )
+    <div className="bg-[#FBFCFE]">
+      <LandingLayout />
+    </div>
+  );
 }
 
 export default LandingPage;
