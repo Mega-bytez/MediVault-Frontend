@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import logo from "../assets/medivaultlogo2.png";
 import { Divide as Hamburger } from "hamburger-react";
 import { useClickAway } from "react-use";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const ref = useRef(null);
@@ -32,13 +32,15 @@ const Navbar = () => {
         id="alignment-container"
         className="w-[90%] lg:w-[80%] h-[100%] mx-auto flex justify-between items-center"
       >
-        <div id="logo">
-          <img
-            src={logo}
-            alt="medivault logo"
-            className="w-[180px] md:w-[250px] lg:w-[300px]"
-          />
-        </div>
+        <Link to="/">
+          <div id="logo">
+            <img
+              src={logo}
+              alt="medivault logo"
+              className="w-[180px] md:w-[250px] lg:w-[300px]"
+            />
+          </div>
+        </Link>
         {/* Desktop Menu Items */}
         <div
           id="menu-items"
@@ -81,9 +83,11 @@ const Navbar = () => {
           className="lg:hidden w-[60%] bg-[#7BBD36] absolute right-0  z-[200]"
         >
           <ul className="h-[100%] w-[100%]  flex flex-col  shadow-lg">
-            <li className="text-[1.1rem] px-[30px] text-white leading-[50px] hover:bg-[#9AC66F] hover:text-white ">
-              Login
-            </li>
+            <Link to="/login">
+              <li className="text-[1.1rem] px-[30px] text-white leading-[50px] hover:bg-[#9AC66F] hover:text-white ">
+                Login
+              </li>
+            </Link>
             <li className="text-[1.1rem] px-[30px] text-white leading-[50px] hover:bg-[#9AC66F] hover:text-white ">
               Register
             </li>

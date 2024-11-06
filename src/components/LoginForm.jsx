@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
 import padlock from "../assets/forms/padlock.jpg";
+import { apiClient } from "../services/config";
 
 const LoginForm = () => {
+
+    const handleSubmit = async ()=> {
+
+       
+    }
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-[#fafafa]">
       <div className="flex flex-col md:flex-row w-full max-w-4xl bg-white shadow-lg rounded-lg">
         <div className="w-full md:w-1/2 px-12 py-12 space-y-8">
           <h1 className="text-3xl font-bold mb-6 text-[#7BBD36]">
@@ -11,7 +18,7 @@ const LoginForm = () => {
             <br />
           </h1>
 
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label
                 htmlFor="email"
