@@ -44,10 +44,8 @@ const Navbar = () => {
           id="menu-items"
           className="hidden lg:flex lg:items-center lg:gap-x-[1.5rem]"
         >
-          <NavLink>
-            <span className="text-[1.2rem] hover:text-[#7BBD36] ">
-              Login
-            </span>
+          <NavLink to="/login">
+            <span className="text-[1.2rem] hover:text-[#7BBD36] ">Login</span>
           </NavLink>
           <NavLink>
             <span className="text-[1.2rem] hover:text-[#7BBD36] ">
@@ -55,9 +53,7 @@ const Navbar = () => {
             </span>
           </NavLink>
           <NavLink>
-            <span className="text-[1.2rem] hover:text-[#7BBD36] ">
-              About
-            </span>
+            <span className="text-[1.2rem] hover:text-[#7BBD36] ">About</span>
           </NavLink>
           <NavLink>
             <button className="bg-[#7BBD36] text-white tracking-2 font-bold px-[30px] py-[10px] rounded-[25px] hover:scale-[1.1] ease-in-out duration-100">
