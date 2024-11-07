@@ -46,10 +46,16 @@ const Navbar = () => {
           id="menu-items"
           className="hidden lg:flex lg:items-center lg:gap-x-[1.5rem]"
         >
-          <NavLink to="/login">
+          <NavLink
+            to="/login"
+            style={({ isActive }) => ({ color: isActive && "#7BBD36" })}
+          >
             <span className="text-[1.2rem] hover:text-[#7BBD36] ">Login</span>
           </NavLink>
-          <NavLink>
+          <NavLink
+            to="/sign-up"
+            style={({ isActive }) => ({ color: isActive && "#7BBD36" })}
+          >
             <span className="text-[1.2rem] hover:text-[#7BBD36] ">
               Register
             </span>

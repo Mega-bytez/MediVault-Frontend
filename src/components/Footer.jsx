@@ -18,7 +18,7 @@ const date = new Date().getFullYear();
               Useful Links
             </h5>
             <ul className="flex flex-col gap-y-[0.3rem] align-center text-[1rem] md:text-[1.1rem] lg:text-[1.1rem]r">
-              <Link to="">
+              <Link to="/sign-up">
                 <li className="text-[#7BBD36] hover:text-[#7BBD36] cursor-pointer">
                   Register Account
                 </li>
@@ -40,7 +40,10 @@ const date = new Date().getFullYear();
               </Link>
             </ul>
           </div>
-          <div id="news-letter" className="flex flex-col gap-y-3 text-center lg:w-[50%]">
+          <div
+            id="news-letter"
+            className="flex flex-col gap-y-3 text-center lg:w-[50%]"
+          >
             <h4 className="text-[1.5rem] md:text-[2rem] font-semibold leading-6 md:leading-8">
               Subscribe to our Newsletter
             </h4>

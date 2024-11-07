@@ -28,10 +28,10 @@ const LoginForm = () => {
     <div className="flex items-center justify-center min-h-screen bg-[#fafafa]">
       <div className="flex flex-col md:flex-row w-full max-w-4xl bg-white shadow-lg rounded-lg">
         <div className="w-full md:w-1/2 px-12 py-12 space-y-8">
-          <h1 className="text-3xl font-bold mb-6 text-[#7BBD36]">
+          <h3 className="text-3xl font-bold mb-6 text-[#7BBD36]">
             Login
             <br />
-          </h1>
+          </h3>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
