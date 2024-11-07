@@ -94,15 +94,23 @@ const Navbar = () => {
                 Login
               </li>
             </Link>
-            <li className="text-[1.1rem] px-[30px] text-white leading-[50px] hover:bg-[#9AC66F] hover:text-white ">
-              Register
-            </li>
-            <li className="text-[1.1rem] px-[30px] text-white leading-[50px] hover:bg-[#9AC66F] hover:text-white ">
-              About Us
-            </li>
-            <li className="text-[1.2rem] px-[30px] text-white leading-[50px] hover:bg-[#9AC66F] hover:text-white ">
-              Sell
-            </li>
+            <Link to="/sign-up">
+              <li className="text-[1.1rem] px-[30px] text-white leading-[50px] hover:bg-[#9AC66F] hover:text-white ">
+                Register
+              </li>
+            </Link>
+
+            <Link to="">
+              <li className="text-[1.1rem] px-[30px] text-white leading-[50px] hover:bg-[#9AC66F] hover:text-white ">
+                About Us
+              </li>
+            </Link>
+
+            <Link to="">
+              <li className="text-[1.2rem] px-[30px] text-white leading-[50px] hover:bg-[#9AC66F] hover:text-white ">
+                Sell
+              </li>
+            </Link>
           </ul>
         </div>
       )}

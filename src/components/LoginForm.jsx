@@ -25,7 +25,7 @@ const LoginForm = () => {
     }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#fafafa]">
+    <div className="flex items-center justify-center min-h-[90vh] h-auto py-[100px] bg-[#fafafa]">
       <div className="flex flex-col md:flex-row w-full max-w-4xl bg-white shadow-lg rounded-lg">
         <div className="w-full md:w-1/2 px-12 py-12 space-y-8">
           <h3 className="text-3xl font-bold mb-6 text-[#7BBD36]">
@@ -87,7 +87,7 @@ const LoginForm = () => {
             </button>
             <div className="flex items-center justify-center gap-x-2">
               <p>Don&apos;t have an account?</p>
-              <Link to="" className="text-md text-[#7BBD36] hover:underline">
+              <Link to="/sign-up" className="text-md text-[#7BBD36] hover:underline">
                 Register here
               </Link>
             </div>

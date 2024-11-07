@@ -30,7 +30,7 @@ const SignUpForm = () => {
     }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-[90vh] h-auto py-[100px] bg-gray-100">
       <div className="flex flex-col md:flex-row w-full max-w-4xl bg-white shadow-lg rounded-lg">
         <div className="w-full md:w-1/2 p-8 space-y-6">
           <h3 className="text-3xl font-bold mb-6 text-[#7BBD36]">
@@ -161,7 +161,7 @@ const SignUpForm = () => {
             </button>
             <div className=" flex justify-center gap-x-2" >
               <p>Already have an account?</p>
-              <Link to="" title="Login">
+              <Link to="/login" title="Login">
                 <span className="text-[#7BBD36] hover:underline">Login</span>
               </Link>
             </div>
