@@ -1,12 +1,27 @@
 import { Link } from "react-router-dom";
 import padlock from "../assets/forms/padlock.jpg";
 import { apiClient } from "../services/config";
+import { apiLogin } from "../services/auth";
 
 const LoginForm = () => {
 
-    const handleSubmit = async ()=> {
+    const handleSubmit = async (event)=> {
+        try {
+          event.preventDefault(); //Preventing the page from reloading after clicking submit.
+          const formData = new FormData(event.target); //Grabbing all the data from the form and storing it in a variable called formData.
 
-       
+          //Preparing the payload to be sent as an object.
+          const email = formData.get("email");
+          const password = formData.get("password");
+
+          //Passing the payload to the api call to be posted... And then storing the response in a variable called response
+          const response = await apiLogin({ email, password });
+            console.log(response);
+        } catch (error) {
+            alert(error)
+            console.log(error);
+        }
+    
     }
 
   return (
@@ -63,10 +78,7 @@ const LoginForm = () => {
                 Forgot your password?
               </Link>
             </div>
-            <h6 className="text-sm text-gray-500">
-              By completing this survey you are consenting to storing and using
-              your data to help us improve our services to you.
-            </h6>
+            
             <button
               type="submit"
               className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#7BBD36] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
