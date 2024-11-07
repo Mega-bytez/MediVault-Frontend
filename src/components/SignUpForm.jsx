@@ -1,7 +1,34 @@
 import { Link } from "react-router-dom";
 import pharmacist from "../assets/forms/pharmacist.png";
+import { apiSignIn } from "../services/auth";
 
 const SignUpForm = () => {
+
+    const handleSubmit = async (event) => {
+        try {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);// grabbing form data from form and storing it in variable formData
+
+            //Preparing the payload to be sent as an object to backend
+            const firstName = formData.get("firstName");
+            const lastName = formData.get("lastName");
+            const email = formData.get("email");
+            const mobileNumber = formData.get("mobileNumber");
+            const password = formData.get("password");
+            const profilePicture = formData.get("profilePicture");
+            const dateOfBirth = formData.get("dateOfBirth");
+
+            
+            const response = await apiSignIn(firstName, lastName, email, mobileNumber, password, profilePicture, dateOfBirth)
+            console.log(response);
+
+        } catch (error) {
+            alert(error.message);
+            console.log(error);
+        }
+    }
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="flex flex-col md:flex-row w-full max-w-4xl bg-white shadow-lg rounded-lg">
@@ -10,7 +37,7 @@ const SignUpForm = () => {
             Sign Up with MediVault
           </h3>
 
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label
                 htmlFor="firstName"
