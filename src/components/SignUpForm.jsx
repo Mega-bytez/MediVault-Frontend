@@ -9,23 +9,13 @@ const SignUpForm = () => {
             event.preventDefault();
 
             const formData = new FormData(event.target);// grabbing form data from form and storing it in variable formData
-
-            //Preparing the payload to be sent as an object to backend
-            const firstName = formData.get("firstName");
-            const lastName = formData.get("lastName");
-            const email = formData.get("email");
-            const mobileNumber = formData.get("mobileNumber");
-            const password = formData.get("password");
-            const profilePicture = formData.get("profilePicture");
-            const dateOfBirth = formData.get("dateOfBirth");
-
             
-            const response = await apiSignIn(firstName, lastName, email, mobileNumber, password, profilePicture, dateOfBirth)
+            const response = await apiSignIn(formData)
             console.log(response);
 
         } catch (error) {
-            alert(error.message);
-            console.log(error);
+            alert(error.response?.data?.message);
+            console.log(error.response?.data?.message);
         }
     }
 
@@ -146,7 +136,7 @@ const SignUpForm = () => {
               <input
                 id="dateOfBirth"
                 type="date"
-                value="2024-11-07"
+                
                 name="dateOfBirth"
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
                 placeholder="Enter your date of birth. Eg. 0801234567"
@@ -155,7 +145,7 @@ const SignUpForm = () => {
             </div>
             <button
               type="submit"
-              className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-black bg-[#7BBD36] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7BBD36]"
+              className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-black bg-[#7BBD36]"
             >
               Sign Up
             </button>

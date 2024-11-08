@@ -4,7 +4,7 @@ const Footer = () => {
 const date = new Date().getFullYear();
 
   return (
-    <footer className="w-[100vw] bg-[#eeeeee] py-[3rem] relative">
+    <footer className="w-[100vw] bg-[#eeeeee] py-[3rem] relative mt-auto">
       <div
         id="alignment-container"
         className=" w-[90%] lg:w-[80%] mx-auto flex flex-col gap-y-[2.6rem]"
