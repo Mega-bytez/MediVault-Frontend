@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { storeOutlet } from "../../services/arrays";
@@ -167,6 +167,9 @@ const StorePage = () => {
               </div>
             </div>
           </div>
+        </section>
+        <section>
+          <Outlet/>
         </section>
       </main>
       <Footer />
