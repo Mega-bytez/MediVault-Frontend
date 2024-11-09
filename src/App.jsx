@@ -4,6 +4,7 @@ import LandingPage from './pages/landingPage'
 import Dashboard from './pages/dashboard'
 import LoginPage from './pages/loginPage'
 import SignUpPage from './pages/signUpPage'
+import StorePage from './pages/storePage'
 
 function App() {
   const router = createBrowserRouter([
@@ -22,7 +23,11 @@ function App() {
     {
       path:"/dashboard",
       element: <Dashboard />
-    }
+    },
+    {
+      path:"/store/:id",
+      element: <StorePage />
+    },
   ])
 
   return <RouterProvider router={router}/>

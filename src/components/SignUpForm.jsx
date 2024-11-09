@@ -11,11 +11,11 @@ const SignUpForm = () => {
             const formData = new FormData(event.target);// grabbing form data from form and storing it in variable formData
             
             const response = await apiSignIn(formData)
-            console.log(response);
+            console.log('yy',response);
 
         } catch (error) {
-            alert(error.response?.data?.message);
-            console.log(error.response?.data?.message);
+            // alert(error;
+            console.log(error);
         }
     }
 
@@ -123,7 +123,6 @@ const SignUpForm = () => {
                 name="profilePicture"
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
                 placeholder="Upload profile picture"
-                required
               />
             </div>
             <div>
@@ -145,7 +144,7 @@ const SignUpForm = () => {
             </div>
             <button
               type="submit"
-              className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-black bg-[#7BBD36]"
+              className="w-full text-white py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-black bg-[#7BBD36]"
             >
               Sign Up
             </button>
