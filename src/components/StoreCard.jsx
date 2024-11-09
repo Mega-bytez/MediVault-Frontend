@@ -6,7 +6,7 @@ const StoreCard = ({key, id, storeName, pic}) => {
     <Link to={`/store/${id}`}>
       <div
         key={key}
-        className="store-card lg:w-[250px] lg:h-[250px] md:w-[200px] md:h-[200px] overflow-hidden relative flex items-center hover:scale-[1.05] duration-200 ease-in-out rounded-[10px]"
+        className="store-card lg:w-[250px] lg:h-[250px] md:w-[200px] md:h-[200px] w-[130px] h-[130px] overflow-hidden relative flex items-center hover:scale-[1.05] duration-200 ease-in-out rounded-[10px]"
       >
         <img
           src={pic}
@@ -14,8 +14,8 @@ const StoreCard = ({key, id, storeName, pic}) => {
           className="h-[100%] w-[100%] object-cover"
         />
 
-        <div className="overlay bg-[#0000003e] h-[100%] w-[100%] absolute top-0 left-0 flex justify-center items-end hover:bg-[#000000b1] hover:text-white hover:items-center hover:font-semibold">
-          <h4 className="font-semibold text-[1.3rem] mb-[20px] text-white">
+        <div className="overlay bg-[#0000003e] h-[100%] w-[100%] absolute top-0 left-0 flex justify-center items-end  hover:bg-[#000000b1] hover:text-white hover:items-center hover:font-semibold">
+          <h4 className="lg:font-semibold lg:text-[1.3rem] md:font-semibold md:text-[1.3rem] font-semibold text-[1.1rem] text-center leading-[1.1rem] mb-[20px] text-white">
             {storeName}
           </h4>
         </div>

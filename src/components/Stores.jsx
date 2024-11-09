@@ -6,10 +6,10 @@ const Stores = () => {
     <section className="lg:w-[100vw] flex-grow h-auto  py-[4rem]">
       <div
         id="alignment-container"
-        className="lg:w-[80%] md:w-[90%] w-[80%] mx-auto lg:flex lg:flex-col lg:gap-y-[2.5rem]  py-[]"
+        className="lg:w-[80%] md:w-[90%] w-[80%] mx-auto flex flex-col lg:gap-y-[2.5rem] md:gap-y-[2rem] gap-y-[1.8rem] "
       >
         <div className="flex justify-between items-center">
-          <h3 className="lg:text-[2.4rem] lg:font-medium md:text-[2rem] md:font-medium ">
+          <h3 className="lg:text-[2.4rem] lg:font-medium md:text-[2rem] md:font-medium text-[1.5rem] font-medium ">
             Pharmacies
           </h3>
           {/* <button className="bg-[#7BBD36] text-white px-[15px] py-[10px] rounded-[40px]">
