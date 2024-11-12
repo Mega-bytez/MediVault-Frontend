@@ -1,4 +1,4 @@
-import { Outlet, useParams } from "react-router-dom";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { storeOutlet } from "../../services/arrays";
@@ -27,14 +27,61 @@ const StorePage = () => {
   console.log(singlePharmacy);
 
   return (
-    <div className="lg:min-h-[100vh] flex flex-col gap-y-[3rem] bg-[#fafafa]">
+    <div className="lg:min-h-[100vh]  flex flex-col gap-y-[3rem] bg-[#fafafa]">
       <Navbar />
-      <main className=" flex flex-col flex-grow">
-        <PharmacyDetails 
-        storeName={singlePharmacy.pharmacyName}
-        />
-        <section>
-          <Outlet/>
+      <main className=" flex flex-col flex-grow gap-y-[2rem]">
+        <PharmacyDetails storeName={singlePharmacy.pharmacyName} />
+        <section className="flex  flex-grow h-auto">
+          <div
+            id="aligment-container"
+            className="lg:w-[80%] mx-auto items-start flex justify-between"
+          >
+            <div
+              id="categories"
+              className="lg:w-[23%] h-auto bg-white shadow-lg px-[40px] py-[50px] sticky top-[20px] flex flex-col gap-y-[1.5rem]"
+            >
+              <h4 className="lg:text-[1.6rem] lg:font-medium">Categories</h4>
+              <ul className="flex flex-col gap-y-[1rem]">
+                <NavLink
+                  to=""
+                  style={({ isActive }) => ({ color: isActive && "#7BBD36" })}
+                >
+                  <li className="text-[#7f7f7f] leading-tight hover:text-[#7BBD36]">
+                    Over-the-Counter (OTC) Medications
+                  </li>
+                </NavLink>
+                <NavLink
+                  to=""
+                  style={({ isActive }) => ({ color: isActive && "#7BBD36" })}
+                >
+                  <li className="text-[#7f7f7f] leading-tight hover:text-[#7BBD36]">
+                    Vitamins and Supplements.
+                  </li>
+                </NavLink>
+                <NavLink
+                  to=""
+                  style={({ isActive }) => ({ color: isActive && "#7BBD36" })}
+                >
+                  <li className="text-[#7f7f7f] leading-tight hover:text-[#7BBD36]">
+                    Personal Care Products
+                  </li>
+                </NavLink>
+                <li className="text-[#7f7f7f] leading-tight hover:text-[#7BBD36]">
+                  Medical Equipment and Devices
+                </li>
+                <li className="text-[#7f7f7f] leading-tight hover:text-[#7BBD36]">
+                  Lifestyle and Wellness.
+                </li>
+                <li className="text-[#7f7f7f] leading-tight hover:text-[#7BBD36]">
+                  ⁠⁠Sexual Health.
+                </li>
+              </ul>
+            </div>
+
+            <div id="outlet" className="lg:w-[75%] h-auto">
+              <Outlet />
+            </div>
+          </div>
         </section>
       </main>
       <Footer />

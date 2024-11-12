@@ -2,16 +2,16 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 
-const ProductCard = (id, image, productname, price ) => {
+const ProductCard = ({id, image, productname, price} ) => {
   return (
     <div
       key={id}
-      className=" bg-white w-[100%] h-[170px]  flex rounded-[6px] shadow-lg hover:scale-[1.05] transition-transform duration-300 ease-in-out"
+      className=" bg-white w-[100%] h-[200px]  flex rounded-[6px] shadow-lg hover:scale-[1.05] transition-transform duration-300 ease-in-out"
     >
       <div className="image w-[44%] h-[100%] rounded-l-[6px] shadow-sm flex justify-center items-center overflow-hidden">
         <img
           src={image}
-          alt="Image of ad"
+          alt="Image of product"
           className="w-[100%] h-[100%] object-cover rounded-[inherit]  "
         />
       </div>
@@ -20,7 +20,7 @@ const ProductCard = (id, image, productname, price ) => {
           <h5 className="font-medium">{productname}</h5>
         </Link>
         <Link>
-          <h4 className=" font-semibold text-[1.3rem] text-[#e41e1b]">
+          <h4 className=" font-semibold text-[1.3rem] text-[#7BBD36]">
             ₵{price}
           </h4>
         </Link>
@@ -43,6 +43,11 @@ ProductCard.propTypes = {
     PropTypes.number,
   ]).isRequired,
   id: PropTypes.oneOfType([
+    // targetID can be string or number
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
+  price: PropTypes.oneOfType([
     // targetID can be string or number
     PropTypes.string,
     PropTypes.number,

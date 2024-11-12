@@ -6,6 +6,7 @@ import LoginPage from './pages/loginPage'
 import SignUpPage from './pages/signUpPage'
 import StorePage from './pages/storePage'
 import StoreProducts from './components/StoreProducts'
+import ProductReview from './pages/productReview'
 
 function App() {
   const router = createBrowserRouter([
@@ -30,11 +31,15 @@ function App() {
       element: <StorePage />,
       children: [
         {
-          path:"all-products",
+          index: true,
           element: <StoreProducts />
         }
       ]
     },
+    {
+      path:"/product-review",
+      elememt: <ProductReview />
+    }
   ])
 
   return <RouterProvider router={router}/>
