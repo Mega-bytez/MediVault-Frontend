@@ -16,7 +16,7 @@ const ProductCard = ({id, image, productname, price} ) => {
         />
       </div>
       <div className="text w-[56%] h-[100%] p-[20px] flex flex-col justify-center gap-y-[0.5rem]">
-        <Link>
+        <Link to="/product-review">
           <h5 className="font-medium">{productname}</h5>
         </Link>
         <Link>

@@ -36,7 +36,7 @@ const PharmacyDetails = ({storeName}) => {
           >
             <div id="top-side" className="">
               <h4 className="lg:text-[3.4rem] md:text-[2.2rem] text-[1.35rem] text-white lg:font-semibold">
-                {storeName}
+                {storeName} Store Name
               </h4>
               <span id="socials" className="flex gap-x-[1rem] justify-center">
                 <a
