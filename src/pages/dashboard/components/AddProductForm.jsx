@@ -1,10 +1,48 @@
+import { useEffect } from "react";
+import { apiAddProduct } from "../../../services/products";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+
 const AddProductForm = () => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const formData = new FormData(event.target);
+      const response = await apiAddProduct(formData);
+      console.log(response);
+      Swal.fire({
+        icon: "success",
+        title: "Product Added Successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
+      navigate("/dashboard")
+
+// for (let [key, value] of formData.entries()) {
+//   console.log(`${key}: ${value}`);
+// }      console.log(response);
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Failed to Add Product",
+        text: "An error occurred while posting the ad. Please try again.",
+      });
+    }
+  };
+
+
+
   return (
     <div className="h-[100%] mx-auto w-[100%] shadow-lg p-[40px] bg-white flex flex-col gap-y-[3rem]">
       <h4 className="lg:text-[2.2rem] font-medium text-[#7BBD36]">
-        New Product
+        Add New Product
       </h4>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div
           id="inner-container"
           className="lg:flex items-start lg:gap-y-[2rem] lg:gap-x-[2.5rem] md:flex"
@@ -455,7 +493,7 @@ const AddProductForm = () => {
             <div id="post-btn" className="flex justify-center">
               <button
                 type="submit"
-                className="bg-[#7BBD36] w-[200px] py-[10px] text-white hover:scale-[1.02] transition-transform duration-300 ease-in-out"
+                className="bg-[#7BBD36] w-[200px] py-[10px] text-white hover:scale-[1.05] transition-transform duration-300 ease-in-out"
               >
                 Post Product
               </button>
