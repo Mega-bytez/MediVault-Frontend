@@ -43,6 +43,10 @@ function App() {
           path: "/dashboard/new-product",
           element: <AddProductForm />,
         },
+        {
+          path: "/dashboard/edit-product",
+          element: <EditProductForm />,
+        }
       ],
     },
     {
