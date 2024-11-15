@@ -1,7 +1,36 @@
+import { useEffect, useState } from "react";
 import { storeOutlet } from "../services/arrays";
+import { apiGetAllPharmacies } from "../services/pharmacies";
 import StoreCard from "./StoreCard";
+import Swal from "sweetalert2";
+import loadingGif from '../assets/loading.gif'
 
 const Stores = () => {
+  const [pharmacies, setPharmacies] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const fetchAllPharmacies = async () => {
+    try {
+      setLoading(true);
+      const response = await apiGetAllPharmacies();
+      setPharmacies(response.data);
+    } catch (error) {
+      if(error.status === 400 | 500){
+        Swal.fire({
+          icon: "error",
+          title: "Fetch failed",
+          text: "Render might be asleep",
+        });
+      }
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect (()=>{
+    fetchAllPharmacies()
+  },[])
+
   return (
     <section className="lg:w-[100vw] flex-grow h-auto  lg:py-[2rem] md:py-[1rem] py-[0.2rem]">
       <div
@@ -23,16 +52,22 @@ const Stores = () => {
           id="stores-container"
           className="flex flex-wrap justify-center gap-x-[1.5rem] gap-y-[1.5rem]"
         >
-          {storeOutlet.Pharmacy.map((store) => {
-            return (
-              <StoreCard
-                key={store.id}
-                id={store.id}
-                storeName={store.pharmacyName}
-                pic={store.image}
-              />
-            );
-          })}
+          {loading ? (
+            <div className="h-[300px] w-[100%] flex items-center justify-center">
+              <img src={loadingGif} alt="loading gif" className="h-[70px]" />
+            </div>
+          ) : (
+            pharmacies.map((store) => {
+              return (
+                <StoreCard
+                  key={store.id}
+                  id={store.id}
+                  storeName={store.name}
+                  pic={store.profilePicture}
+                />
+              );
+            })
+          )}
         </div>
       </div>
     </section>

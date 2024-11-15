@@ -9,7 +9,7 @@ const StoreCard = ({key, id, storeName, pic}) => {
         className="store-card lg:w-[250px] lg:h-[250px] md:w-[200px] md:h-[200px] w-[130px] h-[130px] overflow-hidden relative flex items-center hover:scale-[1.05] duration-200 ease-in-out rounded-[10px]"
       >
         <img
-          src={pic}
+          src={`https://savefiles.org/${pic}?shareable_link=505`}
           alt="pharmacy pic"
           className="h-[100%] w-[100%] object-cover"
         />

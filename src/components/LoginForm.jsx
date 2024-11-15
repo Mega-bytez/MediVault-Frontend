@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import padlock from "../assets/forms/padlock.jpg";
 import { apiClient } from "../services/config";
 import { apiLogin } from "../services/auth";
+import Swal from "sweetalert2";
 
 const LoginForm = () => {
+
+  const reRoute = useNavigate();
 
     const handleSubmit = async (event)=> {
         try {
@@ -17,8 +20,31 @@ const LoginForm = () => {
           //Passing the payload to the api call to be posted... And then storing the response in a variable called response
           const response = await apiLogin({ email, password });
             console.log(response);
+
+            if (response.status === 200) {
+              localStorage.setItem("token", response.data.accessToken)
+            }
+
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Your work has been saved",
+              showConfirmButton: false,
+              
+              timer: 1500,
+            });
+
+            reRoute("/dashboard");
         } catch (error) {
-            alert(error)
+          if (error.status === 404) {
+            Swal.fire({
+              icon: "error",
+              title: "Login Failed!!",
+              text: "User doesn't exist",
+              confirmButtonColor: "#7BBD36",
+            });
+          }
+          
             console.log(error);
         }
     
