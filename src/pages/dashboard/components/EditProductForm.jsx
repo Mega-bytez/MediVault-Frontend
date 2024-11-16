@@ -1,39 +1,37 @@
-import Swal from 'sweetalert2';
-import { apiEditProduct } from '../../../services/products';
-import { useNavigate } from 'react-router-dom';
+import Swal from "sweetalert2";
+import { apiEditProduct } from "../../../services/products";
+import { useNavigate } from "react-router-dom";
 
 const EditProductForm = () => {
-    const navigate = useNavigate();
-    
+  const navigate = useNavigate();
 
-const handleSubmit = async (event)=> {
+  const handleSubmit = async (event) => {
     try {
-        event.preventDefault();
-        const formData = new FormData(event.target);
-        const response = await apiEditProduct(formData);
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const response = await apiEditProduct(formData);
 
-         Swal.fire({
-           icon: "success",
-           title: "Product Details Edited Successfully",
-           showConfirmButton: false,
-           timer: 1500,
-         });
-         navigate("/dashboard");
-
+      Swal.fire({
+        icon: "success",
+        title: "Product Details Edited Successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate("/dashboard");
     } catch (error) {
-        Swal.fire({
+        console.log(error);
+      Swal.fire({
         icon: "error",
         title: "Failed to Edit Ad",
         text: "An error occurred while editing the ad. Please try again.",
       });
-
-    
-}
+    }
+  };
 
   return (
     <div className="h-[100%] mx-auto w-[100%] shadow-lg p-[40px] bg-white flex flex-col gap-y-[3rem]">
       <h4 className="lg:text-[2.2rem] font-medium text-[#7BBD36]">
-        Add New Product
+        Edit Product Details
       </h4>
       <form onSubmit={handleSubmit}>
         <div
@@ -496,6 +494,6 @@ const handleSubmit = async (event)=> {
       </form>
     </div>
   );
-}
+};
 
 export default EditProductForm;
