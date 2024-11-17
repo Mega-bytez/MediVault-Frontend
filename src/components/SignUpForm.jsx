@@ -1,23 +1,62 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import pharmacist from "../assets/forms/pharmacist.png";
 import { apiSignIn } from "../services/auth";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 const SignUpForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
-    const handleSubmit = async (event) => {
-        try {
-            event.preventDefault();
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      setIsLoading(true);
 
-            const formData = new FormData(event.target);// grabbing form data from form and storing it in variable formData
-            
-            const response = await apiSignIn(formData)
-            console.log('yy',response);
+      const formData = new FormData(event.target); // grabbing form data from form and storing it in variable formData
 
-        } catch (error) {
-            // alert(error;
-            console.log(error);
-        }
+      // Build the `address` field
+      // const address = JSON.stringify([
+      //   {
+      //     region: formData.get("region"),
+      //     town: formData.get("town"),
+      //     Street: formData.get("street"),
+      //   },
+      // ]);
+
+      // formData.set("address", address); //replace the existing address fields
+
+      // Log form data for debugging
+      // for (let [key, value] of formData.entries()) {
+      //   console.log(key, value);
+      // }
+
+      const response = await apiSignIn(formData);
+      console.log("yy", response);
+
+      Swal.fire({
+        title: "Success!",
+        text: "Your pharmacy has been successfully registered.",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+
+      navigate("/dashboard");
+    } catch (error) {
+      setIsLoading(false);
+
+      Swal.fire({
+        title: "Oops!... SignUp failed",
+        text: "Something went wrong. Please try again.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+
+      console.log(error); // toast error
+    } finally {
+      setIsLoading(false);
     }
+  };
 
   return (
     <div className="flex items-center justify-center min-h-[90vh] h-auto py-[100px] bg-gray-100">
@@ -30,45 +69,30 @@ const SignUpForm = () => {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label
-                htmlFor="firstName"
+                htmlFor="name"
                 className="block text-sm font-medium text-gray-700"
               >
-                First Name
+                Pharmacy Name
               </label>
               <input
-                id="firstName"
+                id="name"
                 type="text"
-                name="firstName"
+                name="name"
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
-                placeholder="Enter your first name"
+                placeholder="Enter the name of your Pharmacy"
                 required
               />
             </div>
+
             <div>
               <label
-                htmlFor="lastName"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Last Name
-              </label>
-              <input
-                id="lastName"
-                type="text"
-                name="lastName"
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
-                placeholder="Enter your last name"
-                required
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="Email"
+                htmlFor="email"
                 className="block text-sm font-medium text-gray-700"
               >
                 Email
               </label>
               <input
-                id="Email"
+                id="email"
                 type="email"
                 name="email"
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
@@ -78,18 +102,49 @@ const SignUpForm = () => {
             </div>
             <div>
               <label
+                htmlFor="licenseNumber"
+                className="block text-sm font-medium text-gray-700"
+              >
+                License Number
+              </label>
+              <input
+                id="licenseNumber"
+                type="text"
+                name="licenseNumber"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
+                placeholder="Enter your license number"
+                required
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="registrationNumber"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Registration Number
+              </label>
+              <input
+                id="registrationNumber"
+                type="text"
+                name="registrationNumber"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
+                placeholder="Enter your registration number"
+                required
+              />
+            </div>
+            <div>
+              <label
                 htmlFor="mobileNumber"
                 className="block text-sm font-medium text-gray-700"
               >
-                Phone Number
+                Contact Number
               </label>
               <input
                 id="mobileNumber"
-                type="tel"
-                pattern="[0-9]{10}"
+                type="number"
                 name="mobileNumber"
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
-                placeholder="Enter your mobile number. Eg. 0801234567"
+                placeholder="Enter your contact number. Eg. 0801234567"
                 required
               />
             </div>
@@ -114,7 +169,7 @@ const SignUpForm = () => {
                 htmlFor="profilePicture"
                 className="block text-sm font-medium text-gray-700"
               >
-                Profile Picture
+                Profile Picture (Storefront)
               </label>
               <input
                 id="profilePicture"
@@ -126,29 +181,88 @@ const SignUpForm = () => {
               />
             </div>
             <div>
-              <label
-                htmlFor="dateOfBirth"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Date of Birth
-              </label>
-              <input
-                id="dateOfBirth"
-                type="date"
-                
-                name="dateOfBirth"
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
-                placeholder="Enter your date of birth. Eg. 0801234567"
-                required
-              />
+              <fieldset className="border-solid border-[2px] p-[20px] flex flex-col gap-y-[1.2rem]">
+                <legend className="bold">Address Information</legend>
+                <div>
+                  <label htmlFor="region">Region</label>
+                  <input
+                    id="region"
+                    type="text"
+                    name="region"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
+                    placeholder="Greater Accra"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="town">Town</label>
+                  <input
+                    id="town"
+                    type="text"
+                    name="town"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
+                    placeholder="Trasacco"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="street">House No. & Street</label>
+                  <input
+                    id="street"
+                    type="text"
+                    name="street"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
+                    placeholder="14 Macroni st."
+                    required
+                  />
+                </div>
+              </fieldset>
+            </div>
+            <div>
+              <fieldset className="border-solid border-[2px] p-[20px] flex flex-col gap-y-[1.2rem]">
+                <legend className="bold">Socials</legend>
+                <div>
+                  <label htmlFor="region">Facebook</label>
+                  <input
+                    id="region"
+                    type="text"
+                    name="region"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
+                    placeholder="Greater Accra"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="town">Town</label>
+                  <input
+                    id="town"
+                    type="text"
+                    name="town"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
+                    placeholder="Trasacco"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="street">House No. & Street</label>
+                  <input
+                    id="street"
+                    type="text"
+                    name="street"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
+                    placeholder="14 Macroni st."
+                    required
+                  />
+                </div>
+              </fieldset>
             </div>
             <button
               type="submit"
-              className="w-full text-white py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-black bg-[#7BBD36]"
+              className="w-full text-white py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium  bg-[#7BBD36]"
             >
-              Sign Up
+              {isLoading ? "Signing Up..." : "Sign Up"}
             </button>
-            <div className=" flex justify-center gap-x-2" >
+            <div className=" flex justify-center gap-x-2">
               <p>Already have an account?</p>
               <Link to="/login" title="Login">
                 <span className="text-[#7BBD36] hover:underline">Login</span>

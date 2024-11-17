@@ -81,6 +81,21 @@ const AddProductForm = () => {
                 </div>
                 <div className="flex flex-col gap-y-[0.3rem]">
                   <label
+                    htmlFor="manufacturer"
+                    className="text-[1rem] text-[#6a5a5a]"
+                  >
+                    Manufacturer
+                  </label>
+                  <input
+                    id="manufacturer"
+                    type="text"
+                    name="manufacturer"
+                    className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
+                    placeholder="Input the product's brand name"
+                  />
+                </div>
+                <div className="flex flex-col gap-y-[0.3rem]">
+                  <label
                     htmlFor="category"
                     className="text-[1rem] text-[#6a5a5a]"
                   >
@@ -99,7 +114,7 @@ const AddProductForm = () => {
                       Select an option
                     </option>
                     <option
-                      value="Over-The-Counter-Medications"
+                      value="Over-the-Counter(Medications)"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Over The Counter Medications (OTC)
@@ -117,7 +132,7 @@ const AddProductForm = () => {
                       Personal Care Products
                     </option>
                     <option
-                      value="Medical Equipment-And-Devices"
+                      value="Medical-Equipment-And-Devices"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Medical Equipment And Devices
@@ -206,14 +221,14 @@ const AddProductForm = () => {
                 </div>
                 <div className="flex flex-col gap-y-[0.3rem]">
                   <label
-                    htmlFor="prescription"
+                    htmlFor="prescriptionRequirements"
                     className="text-[1rem] text-[#6a5a5a]"
                   >
                     Prescription Requirement
                   </label>
                   <select
-                    name="prescription"
-                    id="prescription"
+                    name="prescriptionRequirements"
+                    id="prescriptionRequirements"
                     className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
                   >
                     <option
@@ -272,19 +287,19 @@ const AddProductForm = () => {
                       Select an option
                     </option>
                     <option
-                      value="Adults"
+                      value="adult"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Adults
                     </option>
                     <option
-                      value="Teenagers"
+                      value="Teenage"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Teenagers
                     </option>
                     <option
-                      value="Children"
+                      value="children"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Children
@@ -365,7 +380,7 @@ const AddProductForm = () => {
                     placeholder="Input the brand name"
                   />
                 </div>
-                <div className="flex flex-col gap-y-[0.3rem]">
+                {/* <div className="flex flex-col gap-y-[0.3rem]">
                   <label
                     htmlFor="status"
                     className="text-[1rem] text-[#6a5a5a]"
@@ -397,7 +412,7 @@ const AddProductForm = () => {
                       Out of Stock
                     </option>
                   </select>
-                </div>
+                </div> */}
               </div>
             </fieldset>
 

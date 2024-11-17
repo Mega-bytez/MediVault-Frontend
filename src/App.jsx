@@ -16,6 +16,7 @@ import DashboardLayout from "./layouts/DashboardLayout";
 import MyProducts from "./pages/dashboard/components/AllVendorProducts";
 import AllVendorProducts from "./pages/dashboard/components/AllVendorProducts";
 import AddProductForm from "./pages/dashboard/components/AddProductForm";
+import EditProductForm from "./pages/dashboard/components/EditProductForm";
 
 function App() {
   const router = createBrowserRouter([
@@ -45,7 +46,7 @@ function App() {
         },
         {
           path: "/dashboard/edit-product/:id",
-          element: <EditProductForm />,
+          element: <EditProductForm  />,
         }
       ],
     },
@@ -60,7 +61,7 @@ function App() {
       ],
     },
     {
-      path: "/product-review",
+      path: "/product-review/:id",
       element: <ProductReview />,
     },
   ]);

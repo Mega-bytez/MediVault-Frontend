@@ -7,7 +7,7 @@ import { apiGetAllVendorProducts } from "../../../services/products";
 // import { baseUrl } from "../../services/config";
 
 const AllVendorProducts = () => {
-  const [products, setProducts] = useState([]);
+  const [vendorProducts, setVendorProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const getProducts = async () => {
@@ -15,7 +15,7 @@ const AllVendorProducts = () => {
       setLoading(true);
       const response = await apiGetAllVendorProducts();
       console.log(response);
-      setProducts(response.data);
+      setVendorProducts(response.data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -47,7 +47,7 @@ const AllVendorProducts = () => {
           </Link>
         </div>
         <AdminProductCard />
-        {/* {ads.map((item) => {
+        {vendorProducts.map((item) => {
           return (
             <AdminProductCard
               key={item.id}
@@ -55,10 +55,9 @@ const AllVendorProducts = () => {
               title={item.title}
               price={item.price}
               image={item.image}
-              getAd={getAd}
             />
           );
-        })} */}
+        })}
       </div>
     </section>
   );

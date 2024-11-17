@@ -1,3 +1,4 @@
+import AllProducts from "../components/AllProducts";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
@@ -11,6 +12,7 @@ const LandingLayout = () => {
       <Slider />
       <SearchBar />
       <Stores />
+      <AllProducts />
       <Footer />
     </div>
   );

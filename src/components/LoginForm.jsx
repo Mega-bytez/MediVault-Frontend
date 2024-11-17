@@ -3,13 +3,16 @@ import padlock from "../assets/forms/padlock.jpg";
 import { apiClient } from "../services/config";
 import { apiLogin } from "../services/auth";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const LoginForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
 
   const reRoute = useNavigate();
 
     const handleSubmit = async (event)=> {
         try {
+          setIsLoading(true);
           event.preventDefault(); //Preventing the page from reloading after clicking submit.
           const formData = new FormData(event.target); //Grabbing all the data from the form and storing it in a variable called formData.
 
@@ -28,7 +31,7 @@ const LoginForm = () => {
             Swal.fire({
               position: "top-end",
               icon: "success",
-              title: "Your work has been saved",
+              title: "Login Successful",
               showConfirmButton: false,
               
               timer: 1500,
@@ -36,6 +39,7 @@ const LoginForm = () => {
 
             reRoute("/dashboard");
         } catch (error) {
+          setIsLoading(false);
           if (error.status === 404) {
             Swal.fire({
               icon: "error",
@@ -46,6 +50,8 @@ const LoginForm = () => {
           }
           
             console.log(error);
+        } finally {
+          setIsLoading(false);
         }
     
     }
@@ -104,16 +110,19 @@ const LoginForm = () => {
                 Forgot your password?
               </Link>
             </div>
-            
+
             <button
               type="submit"
               className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#7BBD36] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
-              Log In
+              {isLoading ? "Signing In" : "Log In"}
             </button>
             <div className="flex items-center justify-center gap-x-2">
               <p>Don&apos;t have an account?</p>
-              <Link to="/sign-up" className="text-md text-[#7BBD36] hover:underline">
+              <Link
+                to="/sign-up"
+                className="text-md text-[#7BBD36] hover:underline"
+              >
                 Register here
               </Link>
             </div>
