@@ -12,7 +12,7 @@ const AllProducts = () => {
         setLoading(true)
       const response = await apiGetAllProducts();
       setAllProducts(response.data);
-      console.log(allProducts);
+    //   console.log(allProducts);
     } catch (error) {
       console.log(error);
     } finally {

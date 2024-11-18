@@ -31,7 +31,7 @@ const SignUpForm = () => {
       //   console.log(key, value);
       // }
 
-      const response = await apiSignIn(formData);
+       const response = await apiSignIn(formData);
       console.log("yy", response);
 
       Swal.fire({
@@ -222,33 +222,44 @@ const SignUpForm = () => {
               <fieldset className="border-solid border-[2px] p-[20px] flex flex-col gap-y-[1.2rem]">
                 <legend className="bold">Socials</legend>
                 <div>
-                  <label htmlFor="region">Facebook</label>
+                  <label htmlFor="facebook">Facebook</label>
                   <input
-                    id="region"
+                    id="facebook"
                     type="text"
-                    name="region"
+                    name="facebook"
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
                     placeholder="Greater Accra"
                     required
                   />
                 </div>
                 <div>
-                  <label htmlFor="town">Town</label>
+                  <label htmlFor="instagram">Instagram</label>
                   <input
-                    id="town"
+                    id="instagram"
                     type="text"
-                    name="town"
+                    name="instagram"
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
                     placeholder="Trasacco"
                     required
                   />
                 </div>
                 <div>
-                  <label htmlFor="street">House No. & Street</label>
+                  <label htmlFor="twitter">Twitter</label>
                   <input
-                    id="street"
+                    id="twitter"
                     type="text"
-                    name="street"
+                    name="twitter"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
+                    placeholder="14 Macroni st."
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="WhatsApp">WhatsApp</label>
+                  <input
+                    id="WhatsApp"
+                    type="text"
+                    name="WhatsApp"
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
                     placeholder="14 Macroni st."
                     required

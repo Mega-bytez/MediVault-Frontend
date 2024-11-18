@@ -1,32 +1,74 @@
 import { NavLink, Outlet, useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import { storeOutlet } from "../../services/arrays";
 import pharmDeets from "../../assets/pharmacyDetailsPage/pharm-deets2.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import PharmacyDetails from "./components/PharmacyDetails";
 import { apiClient } from "../../services/config";
+import { useEffect, useState } from "react";
+import { apiGetSinglePharmacyById } from "../../services/pharmacies";
 
 const StorePage = () => {
+  const [pharmacy, setPharmacy] = useState([]);
+  const [iqData, setIqData] = useState([]);
   const { id } = useParams(); // Grabbing the id from the URL.
 
 
-// const singlePharmacy = async () => {
-//   try {
-//     const response = 
-//   } catch (error) {
-    
-//   }
-// }
+  const iq = "67337d189f2b4e65d6c18341"
 
+  const fetchPharmacyDetails = async (id) => {
+    try {
+      const response = await apiGetSinglePharmacyById(id);
+      // console.log(response.data);
+      setPharmacy(response.data);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  useEffect(() => {
+    if (id) {
+      fetchPharmacyDetails(id);
+    }
+  }, [id]);
+
+
+  // const newidfetch = async (iq) => {
+  //   try {
+  //     const res = await apiGetSinglePharmacyById(iq);
+  //     console.log(res.data);
+  //   } catch (error) {
+  //     alert(error);
+  //   }
+  // }; 
+
+  //  useEffect(() => {
+     
+  //    newidfetch(iq)
+  //  }, [iq]);
+
+
+  // useEffect(() => {
+  //   console.log(pharmacy); // This will log the updated state whenever it changes.
+  // }, [pharmacy]);
 
   return (
     <div className="lg:min-h-[100vh]  flex flex-col gap-y-[3rem] bg-[#fafafa]">
       <Navbar />
       <main className=" flex flex-col flex-grow gap-y-[2rem]">
-        <PharmacyDetails 
-        // storeName={singlePharmacy.pharmacyName} 
+        <PharmacyDetails
+        storeName={pharmacy.name}
+        mobileNumber={pharmacy.mobileNumber}
+        email={pharmacy.email}
+        street={pharmacy.street}
+        town={pharmacy.town}
+        instagram={pharmacy.instagram}
+        region={pharmacy.region}
+        facebook={pharmacy.facebook}
+        WhatsApp={pharmacy.WhatsApp}
+        twitter={pharmacy.twitter}
+
         />
         <section className="flex  flex-grow h-auto">
           <div

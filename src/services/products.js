@@ -13,3 +13,5 @@ export const apiAddProduct = async (payload) => apiClient.post(`/addProduct`, pa
 
 
 export const apiEditProduct = async (id) => apiClient.patch(`/update`, id);
+
+export const apiDeleteProduct = async (id) => apiClient.delete(`/delete`, id);

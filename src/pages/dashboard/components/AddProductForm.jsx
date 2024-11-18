@@ -11,7 +11,51 @@ const AddProductForm = () => {
 
     try {
       const formData = new FormData(event.target);
-      const response = await apiAddProduct(formData);
+      // const response = await apiAddProduct(formData);
+
+      const name = formData.get("name");
+      const brandName = formData.get("brandName");
+      const manufacturer = formData.get("manufacturer");
+      const category = formData.get("category");
+      const description = formData.get("description");
+      const dosage = formData.get("dosage");
+      const strength = formData.get("strength");
+      const quantityPerPackage = formData.get("quantityPerPackage");
+      const prescriptionRequirements = formData.get("prescriptionRequirements");
+      const countryOfOrigin = formData.get("countryOfOrigin");
+      const patient = formData.get("patient");
+      const symptoms = formData.get("symptoms");
+      const price = formData.get("price");
+      const stockQuantity = formData.get("stockQuantity");
+      const expiryDate = formData.get("expiryDate");
+      const precautions = formData.get("precautions");
+      const sideEffect = formData.get("sideEffect");
+      const storageInstruction = formData.get("storageInstruction");
+
+
+      const payload = {
+        name,
+        brandName,
+        manufacturer,
+        category,
+        description,
+        dosage,
+        strength,
+        quantityPerPackage,
+        prescriptionRequirements,
+        countryOfOrigin,
+        patient,
+        symptoms,
+        price,
+        stockQuantity,
+        expiryDate,
+        precautions,
+        sideEffect,
+        storageInstruction,
+      };
+
+      const response = await apiAddProduct(payload);
+
       console.log(response);
       Swal.fire({
         icon: "success",
@@ -20,11 +64,11 @@ const AddProductForm = () => {
         timer: 1500,
       });
 
-      navigate("/dashboard")
+      navigate("/dashboard");
 
-// for (let [key, value] of formData.entries()) {
-//   console.log(`${key}: ${value}`);
-// }      console.log(response);
+      // for (let [key, value] of formData.entries()) {
+      //   console.log(`${key}: ${value}`);
+      // }      console.log(response);
     } catch (error) {
       console.log(error);
       Swal.fire({
@@ -34,8 +78,6 @@ const AddProductForm = () => {
       });
     }
   };
-
-
 
   return (
     <div className="h-[100%] mx-auto w-[100%] shadow-lg p-[40px] bg-white flex flex-col gap-y-[3rem]">
@@ -340,7 +382,7 @@ const AddProductForm = () => {
                     </label>
                     <input
                       id="price"
-                      type="number"
+                      type="text"
                       name="price"
                       step="0.1"
                       min="0.00"
@@ -357,7 +399,7 @@ const AddProductForm = () => {
                     </label>
                     <input
                       id="stockQuantity"
-                      type="number"
+                      type="text"
                       name="stockQuantity"
                       min="0.00"
                       className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
@@ -472,7 +514,7 @@ const AddProductForm = () => {
             </fieldset>
 
             {/* Fleidset 5 */}
-            <fieldset className="border-solid border-[2px] p-[20px]">
+            {/* <fieldset className="border-solid border-[2px] p-[20px]">
               <legend className="Bold">Product Images</legend>
               <div className="flex flex-col gap-y-[1.3rem]">
                 <div className="flex flex-col gap-y-[0.3rem]">
@@ -504,7 +546,7 @@ const AddProductForm = () => {
                   />
                 </div>
               </div>
-            </fieldset>
+            </fieldset> */}
             <div id="post-btn" className="flex justify-center">
               <button
                 type="submit"

@@ -3,7 +3,7 @@ import { storeOutlet } from "../services/arrays";
 import { apiGetAllPharmacies } from "../services/pharmacies";
 import StoreCard from "./StoreCard";
 import Swal from "sweetalert2";
-import loadingGif from '../assets/loading.gif'
+import loadingGif from "../assets/loading.gif";
 
 const Stores = () => {
   const [pharmacies, setPharmacies] = useState([]);
@@ -15,21 +15,21 @@ const Stores = () => {
       const response = await apiGetAllPharmacies();
       setPharmacies(response.data);
     } catch (error) {
-      if(error.status === 400 | 500){
+      if ((error.status === 400) | 500) {
         Swal.fire({
           icon: "error",
           title: "Fetch failed",
-          text: "Render might be asleep",
+          text: "Check your internet try again. Render could be asleep too",
         });
       }
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  useEffect (()=>{
-    fetchAllPharmacies()
-  },[])
+  useEffect(() => {
+    fetchAllPharmacies();
+  }, []);
 
   return (
     <section className="lg:w-[100vw] flex-grow h-auto  lg:py-[2rem] md:py-[1rem] py-[0.2rem]">
@@ -72,6 +72,6 @@ const Stores = () => {
       </div>
     </section>
   );
-}
+};
 
 export default Stores;

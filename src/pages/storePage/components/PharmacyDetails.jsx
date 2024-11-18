@@ -14,7 +14,17 @@ import {
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 
-const PharmacyDetails = ({storeName}) => {
+const PharmacyDetails = ({storeName,
+        mobileNumber,
+        email,
+        street,
+        town,
+        instagram,
+        region,
+        facebook,
+        WhatsApp,
+        twitter
+      }) => {
   return (
     <section className="w-[100vw] h-auto">
       <div
@@ -36,11 +46,11 @@ const PharmacyDetails = ({storeName}) => {
           >
             <div id="top-side" className="">
               <h4 className="lg:text-[3.4rem] md:text-[2.2rem] text-[1.35rem] text-white lg:font-semibold">
-                {storeName} Store Name
+                {storeName}
               </h4>
               <span id="socials" className="flex gap-x-[1rem] justify-center">
                 <a
-                  href="https://www.facebook.com"
+                  href={facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -50,7 +60,7 @@ const PharmacyDetails = ({storeName}) => {
                   />
                 </a>
                 <a
-                  href="https://www.instagram.com"
+                  href={instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -60,7 +70,7 @@ const PharmacyDetails = ({storeName}) => {
                   />
                 </a>
                 <a
-                  href="https://www.x.com"
+                  href={twitter}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -70,7 +80,7 @@ const PharmacyDetails = ({storeName}) => {
                   />
                 </a>
                 <a
-                  href="https://wa.me/233261101070?text=Hello%20there!"
+                  href={`https://wa.me/${WhatsApp}?text=Hello%20there!`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -94,7 +104,7 @@ const PharmacyDetails = ({storeName}) => {
                     icon={faLocationDot}
                     className="text-[20px] text-[#7BBD36]"
                   />
-                  <p className="text-white">113 agbawe Avenue, Adenta-Accra</p>
+                  <p className="text-white">{`${street}, ${town}-${region}`}</p>
                 </span>
               </div>
               <div
@@ -130,7 +140,7 @@ const PharmacyDetails = ({storeName}) => {
                       className="text-[20px] text-[#7BBD36]"
                     />
                     <p className="text-white">
-                      +233 30 244 1743/ +233 551 353 504
+                      {mobileNumber}
                     </p>
                   </span>
                   <span className="flex items-center gap-x-[0.6rem]">
@@ -138,7 +148,9 @@ const PharmacyDetails = ({storeName}) => {
                       icon={faEnvelope}
                       className="text-[20px] text-[#7BBD36]"
                     />
-                    <p className="text-white">jcann8691@gmail.com</p>
+                    <a href={email}>
+                    <p className="text-white">{email}</p>
+                    </a>
                   </span>
                 </div>
               </div>
@@ -155,5 +167,14 @@ export default PharmacyDetails;
 
 
 PharmacyDetails.propTypes = {
-    storeName: PropTypes.string.isRequired
+    storeName: PropTypes.string.isRequired,
+    mobileNumber: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    street: PropTypes.string.isRequired,
+    town: PropTypes.string.isRequired,
+    instagram: PropTypes.string.isRequired,
+    region: PropTypes.string.isRequired,
+    facebook: PropTypes.string.isRequired,
+    twitter: PropTypes.string.isRequired,
+    WhatsApp: PropTypes.string.isRequired,
 }

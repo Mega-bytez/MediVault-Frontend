@@ -13,7 +13,7 @@ const StoreProducts = () => {
           className="lg:grid lg:grid-cols-2   justify-center gap-x-[1.5rem] gap-y-[1.5rem]"
         >
           {storeOutlet.Pharmacy.map((store) => store.products.map((product) => {
-            console.log(product);
+            // console.log(product);
               return (
                 <ProductCard
                   key={product.id}
