@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import { storeOutlet } from "../services/arrays";
 import ProductCard from "./ProductCard";
+import { useOutletContext } from "react-router-dom";
 
 const StoreProducts = () => {
+  const pharmacyProducts = useOutletContext();
+  // console.log(pharmacyProducts);
+
   return (
     <section className="lg:w-[100%] flex-grow h-auto md:py-[1rem]">
       <div
@@ -12,19 +17,19 @@ const StoreProducts = () => {
           id="stores-container"
           className="lg:grid lg:grid-cols-2   justify-center gap-x-[1.5rem] gap-y-[1.5rem]"
         >
-          {storeOutlet.Pharmacy.map((store) => store.products.map((product) => {
+          {pharmacyProducts.map((store) => {
             // console.log(product);
               return (
                 <ProductCard
-                  key={product.id}
-                  id={product.id}
-                  productname={product.productName}
-                  price={product.price}
-                  image={product.image}
+                  key={store.id}
+                  id={store.id}
+                  productname={store.productName}
+                  price={store.price}
+                  image={store.image}
                 />
               );
             })
-          )}
+          }
         </div>
       </div>
     </section>

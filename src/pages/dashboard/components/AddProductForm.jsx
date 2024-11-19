@@ -13,48 +13,47 @@ const AddProductForm = () => {
       const formData = new FormData(event.target);
       // const response = await apiAddProduct(formData);
 
-      const name = formData.get("name");
-      const brandName = formData.get("brandName");
-      const manufacturer = formData.get("manufacturer");
-      const category = formData.get("category");
-      const description = formData.get("description");
-      const dosage = formData.get("dosage");
-      const strength = formData.get("strength");
-      const quantityPerPackage = formData.get("quantityPerPackage");
-      const prescriptionRequirements = formData.get("prescriptionRequirements");
-      const countryOfOrigin = formData.get("countryOfOrigin");
-      const patient = formData.get("patient");
-      const symptoms = formData.get("symptoms");
-      const price = formData.get("price");
-      const stockQuantity = formData.get("stockQuantity");
-      const expiryDate = formData.get("expiryDate");
-      const precautions = formData.get("precautions");
-      const sideEffect = formData.get("sideEffect");
-      const storageInstruction = formData.get("storageInstruction");
+      // const name = formData.get("name");
+      // const brandName = formData.get("brandName");
+      // const manufacturer = formData.get("manufacturer");
+      // const category = formData.get("category");
+      // const description = formData.get("description");
+      // const dosage = formData.get("dosage");
+      // const strength = formData.get("strength");
+      // const quantityPerPackage = formData.get("quantityPerPackage");
+      // const prescriptionRequirements = formData.get("prescriptionRequirements");
+      // const countryOfOrigin = formData.get("countryOfOrigin");
+      // const patient = formData.get("patient");
+      // const symptoms = formData.get("symptoms");
+      // const price = Number(formData.get("price"));
+      // const stockQuantity = Number(formData.get("stockQuantity"));
+      // const expiryDate = formData.get("expiryDate");
+      // const precautions = formData.get("precautions");
+      // const sideEffect = formData.get("sideEffect");
+      // const storageInstruction = formData.get("storageInstruction");
 
+      // const payload = {
+      //   name,
+      //   brandName,
+      //   manufacturer,
+      //   category,
+      //   description,
+      //   dosage,
+      //   strength,
+      //   quantityPerPackage,
+      //   prescriptionRequirements,
+      //   countryOfOrigin,
+      //   patient,
+      //   symptoms,
+      //   price,
+      //   stockQuantity,
+      //   expiryDate,
+      //   precautions,
+      //   sideEffect,
+      //   storageInstruction,
+      // };
 
-      const payload = {
-        name,
-        brandName,
-        manufacturer,
-        category,
-        description,
-        dosage,
-        strength,
-        quantityPerPackage,
-        prescriptionRequirements,
-        countryOfOrigin,
-        patient,
-        symptoms,
-        price,
-        stockQuantity,
-        expiryDate,
-        precautions,
-        sideEffect,
-        storageInstruction,
-      };
-
-      const response = await apiAddProduct(payload);
+      const response = await apiAddProduct(formData);
 
       console.log(response);
       Swal.fire({
@@ -281,7 +280,7 @@ const AddProductForm = () => {
                       Select an option
                     </option>
                     <option
-                      value="Over-The-Counter"
+                      value="Over-the-Counter"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Over The Counter
@@ -514,7 +513,7 @@ const AddProductForm = () => {
             </fieldset>
 
             {/* Fleidset 5 */}
-            {/* <fieldset className="border-solid border-[2px] p-[20px]">
+            <fieldset className="border-solid border-[2px] p-[20px]">
               <legend className="Bold">Product Images</legend>
               <div className="flex flex-col gap-y-[1.3rem]">
                 <div className="flex flex-col gap-y-[0.3rem]">
@@ -546,7 +545,7 @@ const AddProductForm = () => {
                   />
                 </div>
               </div>
-            </fieldset> */}
+            </fieldset>
             <div id="post-btn" className="flex justify-center">
               <button
                 type="submit"

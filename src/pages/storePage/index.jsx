@@ -6,16 +6,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import PharmacyDetails from "./components/PharmacyDetails";
 import { apiClient } from "../../services/config";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { apiGetSinglePharmacyById } from "../../services/pharmacies";
+import { apiGetAllVendorSpecificProducts } from "../../services/products";
+
+// export const PharmProductsContext = createContext();
 
 const StorePage = () => {
   const [pharmacy, setPharmacy] = useState([]);
-  const [iqData, setIqData] = useState([]);
+  const [pharmacyProducts, setPharmacyProducts] = useState([]);
   const { id } = useParams(); // Grabbing the id from the URL.
-
-
-  const iq = "67337d189f2b4e65d6c18341"
 
   const fetchPharmacyDetails = async (id) => {
     try {
@@ -27,48 +27,34 @@ const StorePage = () => {
     }
   };
 
+  const fetchAllPharmacyProducts = async (id) => {
+    const response = await apiGetAllVendorSpecificProducts(id);
+    console.log(response.data);
+    setPharmacyProducts(response.data);
+  };
+
   useEffect(() => {
     if (id) {
       fetchPharmacyDetails(id);
+      fetchAllPharmacyProducts(id);
     }
   }, [id]);
-
-
-  // const newidfetch = async (iq) => {
-  //   try {
-  //     const res = await apiGetSinglePharmacyById(iq);
-  //     console.log(res.data);
-  //   } catch (error) {
-  //     alert(error);
-  //   }
-  // }; 
-
-  //  useEffect(() => {
-     
-  //    newidfetch(iq)
-  //  }, [iq]);
-
-
-  // useEffect(() => {
-  //   console.log(pharmacy); // This will log the updated state whenever it changes.
-  // }, [pharmacy]);
 
   return (
     <div className="lg:min-h-[100vh]  flex flex-col gap-y-[3rem] bg-[#fafafa]">
       <Navbar />
       <main className=" flex flex-col flex-grow gap-y-[2rem]">
         <PharmacyDetails
-        storeName={pharmacy.name}
-        mobileNumber={pharmacy.mobileNumber}
-        email={pharmacy.email}
-        street={pharmacy.street}
-        town={pharmacy.town}
-        instagram={pharmacy.instagram}
-        region={pharmacy.region}
-        facebook={pharmacy.facebook}
-        WhatsApp={pharmacy.WhatsApp}
-        twitter={pharmacy.twitter}
-
+          storeName={pharmacy.name}
+          mobileNumber={pharmacy.mobileNumber}
+          email={pharmacy.email}
+          street={pharmacy.street}
+          town={pharmacy.town}
+          instagram={pharmacy.instagram}
+          region={pharmacy.region}
+          facebook={pharmacy.facebook}
+          WhatsApp={pharmacy.WhatsApp}
+          twitter={pharmacy.twitter}
         />
         <section className="flex  flex-grow h-auto">
           <div
@@ -118,7 +104,9 @@ const StorePage = () => {
             </div>
 
             <div id="outlet" className="lg:w-[75%] h-auto">
-              <Outlet />
+              {/* <PharmProductsContext.Provider value={pharmacyProducts}> */}
+                <Outlet context={pharmacyProducts}/>
+              {/* </PharmProductsContext.Provider> */}
             </div>
           </div>
         </section>
