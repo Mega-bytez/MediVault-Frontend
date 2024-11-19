@@ -52,9 +52,9 @@ const AllVendorProducts = () => {
             <AdminProductCard
               key={item.id}
               id={item.id}
-              title={item.title}
+              name={item.name}
               price={item.price}
-              image={item.image}
+              image={item.thumbImage}
               getProducts={getProducts}
             />
           );

@@ -23,9 +23,9 @@ const StoreProducts = () => {
                 <ProductCard
                   key={store.id}
                   id={store.id}
-                  productname={store.productName}
+                  productname={store.name}
                   price={store.price}
-                  image={store.image}
+                  image={store.thumbImage}
                 />
               );
             })

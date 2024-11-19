@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 
-const ProductCard = ({id, image, productname, price, pharmacy} ) => {
+const ProductCard = ({id, image, productname, price, pharmacy, pharmacyId} ) => {
   const getpharmacy = async () => {
 
   }
@@ -23,9 +23,12 @@ const ProductCard = ({id, image, productname, price, pharmacy} ) => {
         <Link to={`/product-review/${id}`}>
           <h5 className=" text-[1.2rem] font-semibold">{productname}</h5>
         </Link>
-        <Link>
-          <h4 className=" font-semibold text-[1.3rem] text-[#7BBD36]">
-            ₵ {price}
+        <h4 className=" font-semibold text-[1.3rem] text-[#7BBD36]">
+          ₵ {price}
+        </h4>
+        <Link to={`/store/${pharmacyId}`}>
+          <h4 className=" font-medium text-[1 rem] text-[#979797]">
+            {pharmacy}
           </h4>
         </Link>
       </div>

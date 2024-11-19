@@ -9,7 +9,7 @@ import { Api } from "@mui/icons-material";
 import { apiDeleteProduct } from "../../../services/products";
 import Swal from "sweetalert2";
 
-const AdminProductCard = ({ key, id, title, price, image, getProducts }) => {
+const AdminProductCard = ({ key, id, name, price, image, getProducts }) => {
   const [hover, setHover] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
@@ -61,7 +61,7 @@ const AdminProductCard = ({ key, id, title, price, image, getProducts }) => {
       {/* </Link> */}
       <div className="text w-[56%] h-[100%] p-[20px] flex flex-col justify-center gap-y-[0.5rem] relative">
         <Link to="">
-          <h5 className="font-medium">{title}</h5>
+          <h5 className="font-medium">{name}</h5>
         </Link>
         <Link to="">
           <h4 className=" font-semibold text-[1.3rem] text-[#e41e1b]">
@@ -109,7 +109,7 @@ export default AdminProductCard;
 
 // Define prop types for props
 AdminProductCard.propTypes = {
-  title: PropTypes.string.isRequired, //
+  name: PropTypes.string.isRequired, //
   image: PropTypes.string.isRequired, // coverImage is a required string (URL)
   price: PropTypes.string.isRequired,
   key: PropTypes.oneOfType([
