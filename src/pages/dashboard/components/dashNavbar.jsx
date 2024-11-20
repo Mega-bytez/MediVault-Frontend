@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import defaultavatar from "../../../assets/dashNavbar/default-avatar.png";
 import bell from "../../../assets/dashNavbar/notification-bell.png";
 import SearchBar from "../../../components/SearchBar.jsx";
 
-const DashNavbar = () => {
+const DashNavbar = ({profile}) => {
   // Define the search handler function
   const handleSearch = (searchData) => {
     console.log("Search Query:", searchData.query);
@@ -36,7 +37,7 @@ const DashNavbar = () => {
                 className="rounded-[40px]"
               />
             </div>
-            <h6 className="text-[1rem] font-semibold">User&apos;s name</h6>
+            <h6 className="text-[1rem] font-semibold">{profile?.name}</h6>
           </div>
         </div>
       </div>
@@ -45,3 +46,6 @@ const DashNavbar = () => {
 };
 
 export default DashNavbar;
+
+
+

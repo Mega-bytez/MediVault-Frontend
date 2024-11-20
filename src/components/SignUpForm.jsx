@@ -31,17 +31,17 @@ const SignUpForm = () => {
       //   console.log(key, value);
       // }
 
-       const response = await apiSignIn(formData);
+      const response = await apiSignIn(formData);
       console.log("yy", response);
 
       Swal.fire({
         title: "Success!",
-        text: "Your pharmacy has been successfully registered.",
+        text: "Your pharmacy has been successfully registered. Now Login to access your dashboard!",
         icon: "success",
         confirmButtonText: "OK",
       });
 
-      navigate("/dashboard");
+      navigate("/login");
     } catch (error) {
       setIsLoading(false);
 
@@ -178,6 +178,22 @@ const SignUpForm = () => {
                 name="profilePicture"
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
                 placeholder="Upload profile picture"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="backgroundImage"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Background Image (StorePage)
+              </label>
+              <input
+                id="backgroundImage"
+                type="file"
+                accept="image/*"
+                name="backgroundImage"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7BBD36] focus:border-[#7BBD36] sm:text-sm"
+                placeholder="Upload background Image for your store page."
               />
             </div>
             <div>

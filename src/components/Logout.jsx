@@ -22,6 +22,7 @@ const LogoutPopup = () => {
               showConfirmButton: false,
               timer: 1500,
             });
+            localStorage.removeItem("token");
 
         // Navigate to the landing page or any other page after logging out
         navigate("/");

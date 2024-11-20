@@ -53,6 +53,19 @@ const AddProductForm = () => {
       //   storageInstruction,
       // };
 
+      const imageFiles = formData.getAll("image"); // Gets all files from the 'image' field
+      const thumbImage = formData.get("thumbImage"); // Gets the single file from 'thumbImage'
+
+      // Remove empty fields if no files were provided
+      if (imageFiles.length === 0 || !imageFiles[0]) {
+        formData.delete("image"); // Remove the 'image' field if it's empty
+      }
+
+      if (!thumbImage) {
+        formData.delete("thumbImage"); // Remove the 'thumbImage' field if it's empty
+      }
+
+      console.log(event.target);
       const response = await apiAddProduct(formData);
 
       console.log(response);
@@ -161,31 +174,31 @@ const AddProductForm = () => {
                       Over The Counter Medications (OTC)
                     </option>
                     <option
-                      value="Vitamins-and-Supplements"
+                      value="Vitamins and Supplements"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Vitamins and Supplements
                     </option>
                     <option
-                      value="Personal-Care-Products"
+                      value="Personal Care Products"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Personal Care Products
                     </option>
                     <option
-                      value="Medical-Equipment-And-Devices"
+                      value="Medical Equipment And devices"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Medical Equipment And Devices
                     </option>
                     <option
-                      value="Lifestyle-and-Wellness"
+                      value="Lifestyle and Wellness"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Lifestyle and Wellness
                     </option>
                     <option
-                      value="Sexual-Health"
+                      value="Sexual Health"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Sexual Health
@@ -421,39 +434,7 @@ const AddProductForm = () => {
                     placeholder="Input the brand name"
                   />
                 </div>
-                {/* <div className="flex flex-col gap-y-[0.3rem]">
-                  <label
-                    htmlFor="status"
-                    className="text-[1rem] text-[#6a5a5a]"
-                  >
-                    Status
-                  </label>
-                  <select
-                    name="status"
-                    id="status"
-                    className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
-                  >
-                    <option
-                      value=""
-                      disabled
-                      className="text-[1rem] text-[#6a5a5a]"
-                    >
-                      Select an option
-                    </option>
-                    <option
-                      value="Available"
-                      className="text-[1rem] text-[#6a5a5a]"
-                    >
-                      Available
-                    </option>
-                    <option
-                      value="Out of Stock"
-                      className="text-[1rem] text-[#6a5a5a]"
-                    >
-                      Out of Stock
-                    </option>
-                  </select>
-                </div> */}
+                
               </div>
             </fieldset>
 

@@ -5,12 +5,14 @@ console.log(baseUrl);
 
 //bringing in your access Token to authenticate
 //access token from local storage
-const token = localStorage.getItem("token");
 
 //add token as header if received
-if (token) {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-}
+
+// const token = localStorage.getItem("token");
+
+// if (token) {
+//     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+// }
 
 
 export const apiClient = axios.create({
@@ -34,14 +36,14 @@ apiClient.interceptors.request.use(
 
 
 // Add a request interceptor to dynamically add the Authorization header
-apiClient.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response && error.response.status === 401) {
-      console.error("Unauthorized! Redirecting to login...");
-      localStorage.removeItem("token"); // Remove invalid token
-      window.location.href = "/login"; // Redirect to login
-    }
-    return Promise.reject(error);
-  }
-);
+// apiClient.interceptors.response.use(
+//   (response) => response,
+//   (error) => {
+//     if (error.response && error.response.status === 401) {
+//       console.error("Unauthorized! Redirecting to login...");
+//       localStorage.removeItem("token"); // Remove invalid token
+//       window.location.href = "/login"; // Redirect to login
+//     }
+//     return Promise.reject(error);
+//   }
+// );

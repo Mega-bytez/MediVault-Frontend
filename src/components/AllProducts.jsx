@@ -56,8 +56,8 @@ const AllProducts = () => {
                 <ProductCard 
                 key={product.id} 
                 id={product.id}
-                pharmacy={product.user.name}
-                pharmacyId={product.user.id}
+                pharmacy={product?.user?.name}
+                pharmacyId={product?.user?.id}
                 image={product.thumbImage}
                 productname={product.name}
                 price={product.price}

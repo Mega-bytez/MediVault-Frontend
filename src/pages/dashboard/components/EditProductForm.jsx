@@ -1,15 +1,35 @@
 import Swal from "sweetalert2";
-import { apiEditProduct } from "../../../services/products";
-import { useNavigate } from "react-router-dom";
+import {
+  apiEditProduct,
+  apiGetSingleProduct,
+} from "../../../services/products";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const EditProductForm = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
+  const [previousData, setPreviousData] = useState([]);
+
+  const getPrevData = async () => {
+    try {
+      const response = await apiGetSingleProduct(id);
+      setPreviousData(response.data);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+
+    useEffect(() => {
+      getPrevData();
+    }, []);
 
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
       const formData = new FormData(event.target);
-      const response = await apiEditProduct(formData);
+      await apiEditProduct(id,formData);
 
       Swal.fire({
         icon: "success",
@@ -19,7 +39,7 @@ const EditProductForm = () => {
       });
       navigate("/dashboard");
     } catch (error) {
-        console.log(error);
+      console.log(error);
       Swal.fire({
         icon: "error",
         title: "Failed to Edit Ad",
@@ -51,6 +71,7 @@ const EditProductForm = () => {
                     id="name"
                     type="text"
                     name="name"
+                    defaultValue={previousData.name}
                     className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
                     placeholder="Input Product name"
                   />
@@ -66,6 +87,23 @@ const EditProductForm = () => {
                     id="brandName"
                     type="text"
                     name="brandName"
+                    defaultValue={previousData.brandName}
+                    className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
+                    placeholder="Input the product's brand name"
+                  />
+                </div>
+                <div className="flex flex-col gap-y-[0.3rem]">
+                  <label
+                    htmlFor="manufacturer"
+                    className="text-[1rem] text-[#6a5a5a]"
+                  >
+                    Manufacturer
+                  </label>
+                  <input
+                    id="manufacturer"
+                    type="text"
+                    name="manufacturer"
+                    defaultValue={previousData.manufacturer}
                     className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
                     placeholder="Input the product's brand name"
                   />
@@ -79,6 +117,7 @@ const EditProductForm = () => {
                   </label>
                   <select
                     name="category"
+                    defaultValue={previousData.category}
                     id="category"
                     className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
                   >
@@ -90,37 +129,37 @@ const EditProductForm = () => {
                       Select an option
                     </option>
                     <option
-                      value="Over-The-Counter-Medications"
+                      value="Over-the-Counter(Medications)"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Over The Counter Medications (OTC)
                     </option>
                     <option
-                      value="Vitamins-and-Supplements"
+                      value="Vitamins and Supplements"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Vitamins and Supplements
                     </option>
                     <option
-                      value="Personal-Care-Products"
+                      value="Personal Care Products"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Personal Care Products
                     </option>
                     <option
-                      value="Medical Equipment-And-Devices"
+                      value="Medical Equipment And devices"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Medical Equipment And Devices
                     </option>
                     <option
-                      value="Lifestyle-and-Wellness"
+                      value="Lifestyle and Wellness"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Lifestyle and Wellness
                     </option>
                     <option
-                      value="Sexual-Health"
+                      value="Sexual Health"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Sexual Health
@@ -139,6 +178,7 @@ const EditProductForm = () => {
                     rows="3"
                     cols="35"
                     name="description"
+                    defaultValue={previousData.description}
                     className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] pt-[5px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
                     placeholder="Input Product description here"
                   />
@@ -161,6 +201,7 @@ const EditProductForm = () => {
                     id="dosage"
                     type="text"
                     name="dosage"
+                    defaultValue={previousData.dosage}
                     className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
                     placeholder="Input Product Dosage"
                   />
@@ -176,6 +217,7 @@ const EditProductForm = () => {
                     id="strength"
                     type="text"
                     name="strength"
+                    defaultValue={previousData.strength}
                     className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
                     placeholder="Input the product strength"
                   />
@@ -191,20 +233,22 @@ const EditProductForm = () => {
                     id="quantityPerPackage"
                     type="text"
                     name="quantityPerPackage"
+                    defaultValue={previousData.quantityPerPackage}
                     className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
                     placeholder="Input the quantity per Package"
                   />
                 </div>
                 <div className="flex flex-col gap-y-[0.3rem]">
                   <label
-                    htmlFor="prescription"
+                    htmlFor="prescriptionRequirements"
                     className="text-[1rem] text-[#6a5a5a]"
                   >
                     Prescription Requirement
                   </label>
                   <select
-                    name="prescription"
-                    id="prescription"
+                    name="prescriptionRequirements"
+                    defaultValue={previousData.prescriptionRequirements}
+                    id="prescriptionRequirements"
                     className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
                   >
                     <option
@@ -215,7 +259,7 @@ const EditProductForm = () => {
                       Select an option
                     </option>
                     <option
-                      value="Over-The-Counter"
+                      value="Over-the-Counter"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Over The Counter
@@ -239,6 +283,7 @@ const EditProductForm = () => {
                     id="countryOfOrigin"
                     type="text"
                     name="countryOfOrigin"
+                    defaultValue={previousData.countryOfOrigin}
                     className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
                     placeholder="Country where the product is manufactured"
                   />
@@ -252,6 +297,7 @@ const EditProductForm = () => {
                   </label>
                   <select
                     name="patient"
+                    defaultValue={previousData.patient}
                     id="patient"
                     className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
                   >
@@ -263,19 +309,19 @@ const EditProductForm = () => {
                       Select an option
                     </option>
                     <option
-                      value="Adults"
+                      value="adult"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Adults
                     </option>
                     <option
-                      value="Teenagers"
+                      value="Teenage"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Teenagers
                     </option>
                     <option
-                      value="Children"
+                      value="children"
                       className="text-[1rem] text-[#6a5a5a]"
                     >
                       Children
@@ -294,6 +340,7 @@ const EditProductForm = () => {
                     rows="3"
                     cols="35"
                     name="symptoms"
+                    defaultValue={previousData.symptoms}
                     className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] pt-[5px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
                     placeholder="List of symptoms this product targets (e.g., 'Headache, muscle pain, arthritis')."
                   />
@@ -316,8 +363,9 @@ const EditProductForm = () => {
                     </label>
                     <input
                       id="price"
-                      type="number"
+                      type="text"
                       name="price"
+                      defaultValue={previousData.price}
                       step="0.1"
                       min="0.00"
                       className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
@@ -333,8 +381,9 @@ const EditProductForm = () => {
                     </label>
                     <input
                       id="stockQuantity"
-                      type="number"
+                      type="text"
                       name="stockQuantity"
+                      defaultValue={previousData.stockQuantity}
                       min="0.00"
                       className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
                       placeholder="200"
@@ -352,42 +401,10 @@ const EditProductForm = () => {
                     id="expiryDate"
                     type="date"
                     name="expiryDate"
+                    defaultValue={previousData.expiryDate}
                     className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
                     placeholder="Input the brand name"
                   />
-                </div>
-                <div className="flex flex-col gap-y-[0.3rem]">
-                  <label
-                    htmlFor="status"
-                    className="text-[1rem] text-[#6a5a5a]"
-                  >
-                    Status
-                  </label>
-                  <select
-                    name="status"
-                    id="status"
-                    className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
-                  >
-                    <option
-                      value=""
-                      disabled
-                      className="text-[1rem] text-[#6a5a5a]"
-                    >
-                      Select an option
-                    </option>
-                    <option
-                      value="Available"
-                      className="text-[1rem] text-[#6a5a5a]"
-                    >
-                      Available
-                    </option>
-                    <option
-                      value="Out of Stock"
-                      className="text-[1rem] text-[#6a5a5a]"
-                    >
-                      Out of Stock
-                    </option>
-                  </select>
                 </div>
               </div>
             </fieldset>
@@ -408,6 +425,7 @@ const EditProductForm = () => {
                     cols="35"
                     id="precautions"
                     name="precautions"
+                    defaultValue={previousData.precautions}
                     className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] pt-[5px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
                     placeholder="Any critical safety or usage warnings (eg. 'Do not exceed recommended dose')."
                   />
@@ -424,6 +442,7 @@ const EditProductForm = () => {
                     rows="3"
                     cols="35"
                     name="sideEffect"
+                    defaultValue={previousData.sideEffect}
                     className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] pt-[5px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
                     placeholder="List of potential side effects (eg. 'Nausea, dizziness')."
                   />
@@ -440,6 +459,7 @@ const EditProductForm = () => {
                     rows="3"
                     cols="35"
                     name="storageInstruction"
+                    defaultValue={previousData.storageInstruction}
                     className="border-[1px] w-[100%] bg-[#fafafa] rounded-[5px] px-[10px] pt-[5px] h-[35px] focus:outline-none focus:ring-1 focus:ring-[#7BBD36]"
                     placeholder="Details on how to store the product safely (eg. 'Store in a cool, dry place')."
                   />
@@ -486,7 +506,7 @@ const EditProductForm = () => {
                 type="submit"
                 className="bg-[#7BBD36] w-[200px] py-[10px] text-white hover:scale-[1.05] transition-transform duration-300 ease-in-out"
               >
-                Post Product
+                Update Product
               </button>
             </div>
           </div>

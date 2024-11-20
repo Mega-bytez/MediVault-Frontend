@@ -1,19 +1,25 @@
 import { apiClient } from "./config";
 
-export const apiGetAllProducts = async () => apiClient.get(`/getAllProduct`);
+export const apiGetAllProducts = async () => apiClient.get(`/products`);
 
-export const apiGetAllVendorProducts = async () => apiClient.get(`/vendorPro`);
+export const apiGetAllVendorProducts = async () => apiClient.get(`/products/me`);
 
 export const apiGetSingleProduct = async (id) =>
-  apiClient.get(`/getOneProduct/${id}`);
+  apiClient.get(`/products/${id}`);
 
 export const apiAddProduct = async (payload) =>
-  apiClient.post(`/addProduct`, payload);
+  apiClient.post(`/products`, payload);
 
-export const apiEditProduct = async (id) => apiClient.patch(`/update`, id);
+export const apiEditProduct = async (id, payload) => apiClient.patch(`/products/${id}`, payload);
 
-export const apiDeleteProduct = async (id) => apiClient.delete(`/delete`, id);
+export const apiDeleteProduct = async (id) => apiClient.delete(`/products/${id}`);
 
 // Get all vendor specific products, without authentication.
 export const apiGetAllVendorSpecificProducts = async (id) =>
-  apiClient.get(`/vendorPro/${id}`);
+  apiClient.get(`/products/vendors/${id}`);
+
+
+export const apiSearchProduct = async (searchTerm) =>
+  apiClient.get(
+    `/products?filter={"name":{"$regex":"${searchTerm}","$options":"i"}}`
+  );

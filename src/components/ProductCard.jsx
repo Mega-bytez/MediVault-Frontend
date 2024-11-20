@@ -2,10 +2,15 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 
-const ProductCard = ({id, image, productname, price, pharmacy, pharmacyId} ) => {
-  const getpharmacy = async () => {
-
-  }
+const ProductCard = ({
+  id,
+  image,
+  productname,
+  price,
+  pharmacy,
+  pharmacyId,
+}) => {
+  const getpharmacy = async () => {};
 
   return (
     <div
@@ -27,14 +32,14 @@ const ProductCard = ({id, image, productname, price, pharmacy, pharmacyId} ) => 
           ₵ {price}
         </h4>
         <Link to={`/store/${pharmacyId}`}>
-          <h4 className=" font-medium text-[1 rem] text-[#979797]">
+          <h4 className=" font-medium text-[1rem] text-[#979797]">
             {pharmacy}
           </h4>
         </Link>
       </div>
     </div>
   );
-}
+};
 
 export default ProductCard;
 
@@ -44,6 +49,7 @@ export default ProductCard;
 ProductCard.propTypes = {
   productname: PropTypes.string.isRequired, //
   pharmacy: PropTypes.string.isRequired, //
+  pharmacyId: PropTypes.string.isRequired, //
   image: PropTypes.string.isRequired, // coverImage is a required string (URL)
   key: PropTypes.oneOfType([
     // targetID can be string or number

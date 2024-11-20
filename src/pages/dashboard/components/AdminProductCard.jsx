@@ -53,7 +53,7 @@ const AdminProductCard = ({ key, id, name, price, image, getProducts }) => {
       {/* <Link to={`/dashboard/ad-details/${id}`}> */}
       <div className="image w-[44%] h-[100%] rounded-l-[6px] shadow-sm flex justify-center items-center overflow-hidden">
         <img
-          src={`https://savefiles.org/${image}?shareable_link=463`}
+          src={`https://savefiles.org/${image}?shareable_link=505`}
           alt="Image of ad"
           className="w-[100%] h-[100%] object-cover rounded-[inherit]  "
         />
@@ -61,10 +61,10 @@ const AdminProductCard = ({ key, id, name, price, image, getProducts }) => {
       {/* </Link> */}
       <div className="text w-[56%] h-[100%] p-[20px] flex flex-col justify-center gap-y-[0.5rem] relative">
         <Link to="">
-          <h5 className="font-medium">{name}</h5>
+          <h5 className="font-semibold text-[1.2rem]">{name}</h5>
         </Link>
         <Link to="">
-          <h4 className=" font-semibold text-[1.3rem] text-[#e41e1b]">
+          <h4 className=" font-semibold text-[1.3rem] text-[#7BBD36]">
             ${price}
           </h4>
         </Link>
@@ -81,15 +81,15 @@ const AdminProductCard = ({ key, id, name, price, image, getProducts }) => {
         )}
         {isClicked && (
           <ul className="bg-[#ffffff] w-[100px] h-[60px] absolute right-[30px] bottom-[50px] rounded-[10px]  shadow-lg">
-            <Link to={`/dashboard/edit-ad/${id}`}>
-              <li className="h-[50%] px-[15px] hover:bg-[#e41e1b] hover:text-white rounded-t-[10px] flex items-center">
+            <Link to={`/dashboard/edit-product/${id}`}>
+              <li className="h-[50%] px-[15px] hover:bg-[#7BBD36] hover:text-white rounded-t-[10px] flex items-center">
                 <a href="#" className="text-gray-500 hover:text-white">
                   Edit
                 </a>
               </li>
             </Link>
             <li
-              className="h-[50%] px-[15px] hover:bg-[#e41e1b] hover:text-white rounded-b-[10px] flex items-center"
+              className="h-[50%] px-[15px] hover:bg-[#7BBD36] hover:text-white rounded-b-[10px] flex items-center"
               onClick={() => {
                 deleteProduct(id);
               }} // Use deleteBook with targetID
