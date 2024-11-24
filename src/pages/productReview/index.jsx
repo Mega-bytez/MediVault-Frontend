@@ -50,14 +50,19 @@ const ProductReview = () => {
             <div className="flex flex-col gap-y-[8rem]">
               <div
                 id="picture-overview"
-                className="flex justify-between items-start"
+                className="lg:flex-row lg:justify-between lg:items-start flex flex-col gap-y-[2rem]"
               >
-                <div id="left-side" className="lg:w-[49%] bg-[green] h-[300px]">
+                <div
+                  id="left-side"
+                  className="lg:w-[49%] lg:h-[300px] w-[100%] h-auto bg-[green]"
+                >
                   {/* Pass the generated image URLs to the carousel */}
                   {images.length > 0 ? (
                     <ProductCarousel images={images} />
                   ) : (
-                    <p className="text-[1.3rem] text-center font-semibold">No images available</p>
+                    <p className="text-[1.3rem] text-center font-semibold">
+                      No images available
+                    </p>
                   )}
                 </div>
                 <div

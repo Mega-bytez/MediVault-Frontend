@@ -46,7 +46,7 @@ const AllVendorProducts = () => {
             </div>
           </Link>
         </div>
-        <AdminProductCard />
+        
         {vendorProducts.map((item) => {
           return (
             <AdminProductCard
