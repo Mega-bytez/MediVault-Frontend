@@ -15,7 +15,7 @@ const StoreProducts = () => {
       >
         <div
           id="stores-container"
-          className="w-[100%] lg:grid lg:grid-cols-2  md:flex md:flex-wrap flex flex-wrap   justify-center gap-x-[1.5rem] gap-y-[1.5rem] "
+          className="w-[100%] lg:grid lg:grid-cols-2  md:flex md:flex-wrap md:justify-center flex flex-wrap justify-center gap-x-[1.5rem] gap-y-[1.5rem] "
         >
           {pharmacyProducts.map((store) => {
             // console.log(product);

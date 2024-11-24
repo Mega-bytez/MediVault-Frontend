@@ -16,7 +16,7 @@ const  ProductCard = ({
   return (
     <div
       key={id}
-      className=" bg-white w-[150px] h-[180px] lg:h-[200px] lg:w-[100%] md:h-[130px] md:w-[200px] lg:flex-row md:flex  flex-col rounded-[6px] shadow-lg hover:scale-[1.05] transition-transform duration-300 ease-in-out"
+      className=" bg-white w-[150px] h-[180px] lg:h-[200px] lg:w-[100%] md:h-[130px] md:w-[200px] lg:flex lg:flex-row md:flex md:flex-row  flex-col rounded-[6px] shadow-lg hover:scale-[1.05] transition-transform duration-300 ease-in-out"
     >
       <div className="image lg:w-[44%] lg:h-[100%] md:w-[44%] md:h-[100%] w-[100%] h-[56%] rounded-l-[6px] shadow-sm flex justify-center items-center overflow-hidden">
         <img
