@@ -43,7 +43,7 @@ const AllProducts = () => {
         </div>
         <div
           id="stores-container"
-          className="grid lg:grid-cols-3 md:grid-cols-2 grid-col-1 justify-center gap-x-[1.5rem] gap-y-[1.5rem]"
+          className="lg:grid lg:grid-cols-3 md:grid md:grid-cols-2 flex flex-wrap  justify-center gap-x-[1.5rem] gap-y-[1.5rem]"
         >
           {loading ? (
             <div className=" h-[300px] w-[300%] flex items-center justify-center">

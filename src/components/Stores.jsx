@@ -13,6 +13,7 @@ const Stores = () => {
     try {
       setLoading(true);
       const response = await apiGetAllPharmacies();
+      console.log(response.data);
       setPharmacies(response.data);
     } catch (error) {
       if ((error.status === 400) | 500) {
