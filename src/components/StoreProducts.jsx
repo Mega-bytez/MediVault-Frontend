@@ -11,11 +11,11 @@ const StoreProducts = () => {
     <section className="lg:w-[100%] md:w-[100%] w-[100%] flex-grow h-auto md:py-[1rem]">
       <div
         id="alignment-container"
-        className="lg:w-[100%] md:w-[90%] w-[90%] mx-auto flex flex-col lg:gap-y-[2.5rem] md:gap-y-[2rem] gap-y-[1.8rem] "
+        className="lg:w-[100%] md:w-[100%] w-[100%] mx-auto flex flex-col lg:gap-y-[2.5rem] md:gap-y-[2rem] gap-y-[1.8rem] "
       >
         <div
           id="stores-container"
-          className="grid lg:grid-cols-2  md:grid-cols-3 grid-cols-1  justify-center gap-x-[1.5rem] gap-y-[1.5rem] w-[100%]"
+          className="w-[100%] lg:grid lg:grid-cols-2  md:flex md:flex-wrap flex flex-wrap   justify-center gap-x-[1.5rem] gap-y-[1.5rem] "
         >
           {pharmacyProducts.map((store) => {
             // console.log(product);
