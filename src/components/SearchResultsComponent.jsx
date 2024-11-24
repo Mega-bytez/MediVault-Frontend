@@ -1,28 +1,14 @@
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import loadingGif from "../assets/loading.gif";
-import { apiGetAllProducts } from "../services/products";
 import ProductCard from "./ProductCard";
 
-const AllProducts = () => {
-  const [allProducts, setAllProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+const SearchResultsComponent = ({ loading, searchResult }) => {
 
-  const fetchAllProducts = async () => {
-    try {
-        setLoading(true)
-      const response = await apiGetAllProducts();
-      setAllProducts(response.data);
-    //   console.log(allProducts);
-    } catch (error) {
-      console.log(error);
-    } finally {
-        setLoading(false);
-    }
-  };
 
-  useEffect(() => {
-    fetchAllProducts();
-  }, []);
+  useEffect((searchResult) => {
+    console.log("Search results data: after component displays", searchResult);
+  });
 
   return (
     <section className="lg:w-[100vw] flex-grow h-auto  lg:py-[2rem] md:py-[1rem] py-[0.2rem]">
@@ -32,7 +18,7 @@ const AllProducts = () => {
       >
         <div className="flex justify-between items-center">
           <h3 className="lg:text-[2.4rem] lg:font-medium md:text-[2rem] md:font-medium text-[1.5rem] font-medium ">
-            All Products
+            Search Results
           </h3>
           {/* <button className="bg-[#7BBD36] text-white px-[15px] py-[10px] rounded-[40px]">
             See More
@@ -47,14 +33,10 @@ const AllProducts = () => {
         >
           {loading ? (
             <div className=" h-[300px] w-[300%] flex items-center justify-center">
-              <img
-                src={loadingGif}
-                alt="loading gif"
-                className="lg:h-[70px] md:h-[50px] h-[40px]"
-              />
+              <img src={loadingGif} alt="loading gif" className="h-[70px]" />
             </div>
           ) : (
-            allProducts.map((product) => {
+            searchResult.map((product) => {
               return (
                 <ProductCard
                   key={product.id}
@@ -74,4 +56,11 @@ const AllProducts = () => {
   );
 };
 
-export default AllProducts;
+export default SearchResultsComponent;
+
+
+
+SearchResultsComponent.propTypes = {
+  searchResult: PropTypes.array.isRequired, // Must be an array
+  loading: PropTypes.bool.isRequired, // Must be an array
+};

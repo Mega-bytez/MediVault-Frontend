@@ -54,7 +54,11 @@ const Stores = () => {
         >
           {loading ? (
             <div className="h-[300px] w-[100%] flex items-center justify-center">
-              <img src={loadingGif} alt="loading gif" className="h-[70px]" />
+              <img
+                src={loadingGif}
+                alt="loading gif"
+                className="lg:h-[70px] md:h-[50px] h-[40px]"
+              />
             </div>
           ) : (
             pharmacies.map((store) => {

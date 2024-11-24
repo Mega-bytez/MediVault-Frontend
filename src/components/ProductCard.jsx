@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 
-const ProductCard = ({
+const  ProductCard = ({
   id,
   image,
   productname,
@@ -15,7 +15,7 @@ const ProductCard = ({
   return (
     <div
       key={id}
-      className=" bg-white w-[100%] h-[200px]  flex rounded-[6px] shadow-lg hover:scale-[1.05] transition-transform duration-300 ease-in-out"
+      className=" bg-white w-[100%] lg:h-[200px] md:h-[120px]  h-[70px] flex rounded-[6px] shadow-lg hover:scale-[1.05] transition-transform duration-300 ease-in-out"
     >
       <div className="image w-[44%] h-[100%] rounded-l-[6px] shadow-sm flex justify-center items-center overflow-hidden">
         <img
@@ -26,9 +26,11 @@ const ProductCard = ({
       </div>
       <div className="text w-[56%] h-[100%] p-[20px] flex flex-col justify-center gap-y-[0.5rem]">
         <Link to={`/product-review/${id}`}>
-          <h5 className=" text-[1.2rem] font-semibold">{productname}</h5>
+          <h5 className=" lg:text-[1.2rem] text-[0.9rem] font-semibold">
+            {productname}
+          </h5>
         </Link>
-        <h4 className=" font-semibold text-[1.3rem] text-[#7BBD36]">
+        <h4 className=" font-semibold lg:text-[1.3rem] text-[0.9rem] text-[#7BBD36]">
           ₵ {price}
         </h4>
         <Link to={`/store/${pharmacyId}`}>
